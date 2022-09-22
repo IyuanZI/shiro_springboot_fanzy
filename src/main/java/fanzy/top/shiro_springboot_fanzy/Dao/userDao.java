@@ -17,6 +17,8 @@ import java.util.List;
 
 
 public interface userDao {
+	User queryUserByName(String name);
+
 	List<User> queryAllUsers();
 }
 

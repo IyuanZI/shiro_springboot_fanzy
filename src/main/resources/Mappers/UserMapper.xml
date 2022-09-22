@@ -4,9 +4,18 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="userMapper">
-    <select id="queryAllUser" resultType="fanzy.top.shiro_springboot_fanzy.Entity.User">
-        SELECT * FROM user
+    <select id="queryUserByName" resultType="fanzy.top.shiro_springboot_fanzy.Entity.User">
+        select *
+        from user
+        where username = #{name}
     </select>
+
+    <select id="queryAllUser" resultType="fanzy.top.shiro_springboot_fanzy.Entity.User">
+        SELECT *
+        FROM user
+    </select>
+
+
     <select id="test1111" resultType="string">
         select 'test'
     </select>

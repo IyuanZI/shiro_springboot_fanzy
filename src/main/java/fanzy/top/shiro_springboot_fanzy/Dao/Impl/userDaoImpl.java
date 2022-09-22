@@ -14,11 +14,18 @@ import java.util.List;
 
 public class userDaoImpl implements userDao {
 	@Override
+	public User queryUserByName(String name) {
+		User user = (User) mybatis.excuteQuery(sqlSession -> {
+			return sqlSession.selectOne("userMapper.queryUserByName", name);
+		});
+		return user;
+	}
+
+	@Override
 	public List<User> queryAllUsers() {
 		List<User> users = (List<User>) mybatis.excuteQuery(sqlSession -> {
 			return sqlSession.selectList("userMapper.queryAllUser");
 		});
-
 		return users;
 	}
 }

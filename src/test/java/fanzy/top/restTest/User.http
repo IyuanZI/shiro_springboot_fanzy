@@ -1,2 +1,6 @@
 ###
 GET http://localhost:8080/api/allUsers
+
+###
+GET http://localhost:8080/api/user?name=admin
+

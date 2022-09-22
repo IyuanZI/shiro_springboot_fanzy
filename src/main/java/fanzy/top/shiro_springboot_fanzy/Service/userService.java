@@ -14,9 +14,14 @@ import org.springframework.stereotype.Service;
 
 import java.io.Reader;
 import java.util.List;
+
 @Service
 public class userService {
 	private userDao userDao = new userDaoImpl();
+
+	public User queryUserByName(String name) {
+		return userDao.queryUserByName(name);
+	}
 
 	public List<User> queyruAllUsers() {
 		return userDao.queryAllUsers();
