@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: shiro_springboot_fanzy
+
+logging:
+  level:
+    top:
+      fanzy: DEBUG
+    org:
+      springframework:
+        security: DEBUG
+  pattern:
+    console: '%red(%d{E yyyy-MM-dd HH:mm:ss.SSS}) %blue(%-5p) %clr(${PID}){faint} %clr(---){faint}
+                %clr([%8.15t]){cyan} %clr(%-40.40logger{0}){blue} %clr(:){red} %clr(%m){faint}%n'
