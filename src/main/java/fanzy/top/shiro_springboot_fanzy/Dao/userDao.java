@@ -8,11 +8,7 @@ package fanzy.top.shiro_springboot_fanzy.Dao;
 
 
 import fanzy.top.shiro_springboot_fanzy.Entity.User;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
-import java.util.Date;
 import java.util.List;
 
 

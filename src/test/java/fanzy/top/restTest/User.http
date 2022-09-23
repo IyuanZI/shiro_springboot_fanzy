@@ -4,3 +4,5 @@ GET http://localhost:8080/api/allUsers
 ###
 GET http://localhost:8080/api/user?name=admin
 
+###
+POST http://localhost:8080/api/login?username=root&password=123

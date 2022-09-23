@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="permissionMapper">
+    <select id="allPermissions" resultType="fanzy.top.shiro_springboot_fanzy.Entity.Permission">
+        select *
+        from permission
+    </select>
+    <select id="allPermissions_own" resultType="">
+    </select>
+    <select id="allPermissions_ano" resultType="">
+
+    </select>
+    <select id="givePermissionsTo_own" resultType="">
+
+    </select>
+    <select id="givePermissionsTo_ano" resultType="">
+
+    </select>
+    <select id="movePermissionFrom_own" resultType="">
+
+    </select>
+    <select id="movePermissionFrom_ano" resultType="">
+
+    </select>
+
+</mapper>

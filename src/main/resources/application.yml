@@ -1,14 +1,30 @@
 spring:
   application:
     name: shiro_springboot_fanzy
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/zb-shiro
+#    username: root
+#    password: 123456
+#    # Mybatis配置
+#    mybatis:
+#      # 配置XML映射文件中指定的实体类别名路径
+#      type-aliases-package: fanzy.top.shiro_springboot_fanzy_Entity
+#      # 配置MyBatis的xml配置文件路径
+#      mapper-locations: classpath:Mappers/*.xml
+#      # 开启驼峰uName自动映射到u_name
+#      map-underscore-to-camel-case: true
+
+
 
 logging:
   level:
-    top:
-      fanzy: DEBUG
-    org:
-      springframework:
-        security: DEBUG
+    fanzy:
+      top: DEBUG
+  org:
+    apache:
+      shiro:DEBUG
   pattern:
     console: '%red(%d{E yyyy-MM-dd HH:mm:ss.SSS}) %blue(%-5p) %clr(${PID}){faint} %clr(---){faint}
-                %clr([%8.15t]){cyan} %clr(%-40.40logger{0}){blue} %clr(:){red} %clr(%m){faint}%n'
+                %clr([%8.15t]){cyan} %clr(%-40.40logger{40}){blue} %clr(:){red} %clr(%m){faint}%n'
+
