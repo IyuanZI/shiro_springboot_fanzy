@@ -5,24 +5,14 @@
 
 <mapper namespace="permissionMapper">
     <select id="allPermissions" resultType="fanzy.top.shiro_springboot_fanzy.Entity.Permission">
-        select *
-        from permission
+        select permission_id, permission_name, permission_url, permission_perms
+        from user
+        where username = #{name}
     </select>
-    <select id="allPermissions_own" resultType="">
-    </select>
-    <select id="allPermissions_ano" resultType="">
 
-    </select>
-    <select id="givePermissionsTo_own" resultType="">
 
-    </select>
-    <select id="givePermissionsTo_ano" resultType="">
+    <select id="addPermission" parameterType="String">
 
-    </select>
-    <select id="movePermissionFrom_own" resultType="">
-
-    </select>
-    <select id="movePermissionFrom_ano" resultType="">
 
     </select>
 

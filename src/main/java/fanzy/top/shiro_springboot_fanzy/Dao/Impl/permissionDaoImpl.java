@@ -6,43 +6,20 @@
  **/
 package fanzy.top.shiro_springboot_fanzy.Dao.Impl;
 
+import fanzy.top.shiro_springboot_fanzy.Config.mybatis;
 import fanzy.top.shiro_springboot_fanzy.Dao.permissionDao;
 import fanzy.top.shiro_springboot_fanzy.Entity.Permission;
 
+import java.util.List;
+
 public class permissionDaoImpl implements permissionDao {
-	@Override
-	public Permission allPermissions() {
-		return null;
-	}
 
 	@Override
-	public Permission allPermissions_own(int id) {
-		return null;
-	}
-
-	@Override
-	public Permission allPermissions_ano(int id) {
-		return null;
-	}
-
-	@Override
-	public void givePermissionsTo_own(int id) {
-
-	}
-
-	@Override
-	public void givePermissionsTo_ano(int id) {
-
-	}
-
-	@Override
-	public void movePermissionFrom_own(int id) {
-
-	}
-
-	@Override
-	public void movePermissionFrom_ano(int id) {
-
+	public List<Permission> allPermissions_own(String name) {
+		List<Permission> list = (List<Permission>) mybatis.excuteQuery(sqlSession -> {
+			return sqlSession.selectList("permissionMapper.allPermissions", name);
+		});
+		return list;
 	}
 }
 

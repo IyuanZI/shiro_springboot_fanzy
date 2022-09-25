@@ -6,3 +6,6 @@ GET http://localhost:8080/api/user?name=admin
 
 ###
 POST http://localhost:8080/api/login?username=root&password=123
+
+###
+GET http://localhost:8080/admin/scan?name=admin

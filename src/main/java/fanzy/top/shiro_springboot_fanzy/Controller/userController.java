@@ -16,7 +16,6 @@ import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -28,6 +27,7 @@ public class userController {
 	private userService userService;
 
 	@GetMapping("/user")
+
 	public Result queryUserByName(@RequestParam String name) {
 		logger.info(userService.queryUserByName(name).toString());
 		return new Result(userService.queryUserByName(name), 200, "");
