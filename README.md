@@ -10,6 +10,6 @@ git@gitee.com:OnlyLovee/shiro_springboot_fanzy.git
 
 -[ ] 对用户权限的修改操作
 -[ ] 对用户权限进行修改操作后，重新加载用户权限
--[ ] 前端页面可以开始写了
+-[x] 前端页面可以开始写了
 
     
