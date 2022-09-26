@@ -5,13 +5,27 @@
 
 <mapper namespace="permissionMapper">
     <select id="allPermissions" resultType="fanzy.top.shiro_springboot_fanzy.Entity.Permission">
-        select permission_id, permission_name, permission_url, permission_perms
+        select username,
+               permission_id,
+               permission_name,
+               permission_url,
+               permission_perms,
+               create_time,
+               update_time,
+               last_login_time
         from user
-        where username = #{name}
+        where username =
+              #{name}
     </select>
 
 
-    <select id="addPermission" parameterType="String">
+    <select id="addPermission" parameterType="fanzy.top.shiro_springboot_fanzy.Entity.Permission"
+            resultType="fanzy.top.shiro_springboot_fanzy.Entity.Permission">
+        INSERT INTO `zb-shiro`.`user` (`username`, `permission_id`,
+                                       `permission_name`, `permission_url`, `permission_perms`, `create_time`,
+                                       `update_time`, `last_login_time`)
+        VALUES (#{username}, #{permissionId}, #{permissionName}, #{permissionUrl}, #{permissionPerms}, #{createTime},
+                #{updateTime}, #{lastLoginTime});
 
 
     </select>

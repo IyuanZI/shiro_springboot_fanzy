@@ -8,11 +8,13 @@
         select *
         from user
         where username = #{name}
+        AND password IS NOT NULL
     </select>
 
     <select id="queryAllUser" resultType="fanzy.top.shiro_springboot_fanzy.Entity.User">
         SELECT *
         FROM user
+        where password IS NOT NULL
     </select>
 
 

@@ -16,10 +16,16 @@ public class permissionDaoImpl implements permissionDao {
 
 	@Override
 	public List<Permission> allPermissions_own(String name) {
-		List<Permission> list = (List<Permission>) mybatis.excuteQuery(sqlSession -> {
+		return (List<Permission>) mybatis.excuteQuery(sqlSession -> {
 			return sqlSession.selectList("permissionMapper.allPermissions", name);
 		});
-		return list;
+	}
+
+	@Override
+	public Integer addPerm(Permission permission) {
+		return (Integer) mybatis.executeUpdate(sqlSession -> {
+			return sqlSession.insert("permissionMapper.addPermission", permission);
+		});
 	}
 }
 

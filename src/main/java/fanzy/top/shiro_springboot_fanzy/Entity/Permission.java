@@ -13,18 +13,27 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Permission implements Serializable {
+	private String username;
 	private String permissionId;
 	private String permissionName;
 	private String permissionUrl;
 	private String permissionPerms;
+	private Date createTime;
+	private Date updateTime;
+	private Date lastLoginTime;
+
 
 	@Override
 	public String toString() {
 		return "Permission----{" +
+				"username='" + username + '\'' +
 				"permissionId='" + permissionId + '\'' +
 				", permissionName='" + permissionName + '\'' +
 				", permissionUrl='" + permissionUrl + '\'' +
 				", permissionPerms='" + permissionPerms + '\'' +
+				", createTime='" + createTime + '\'' +
+				", updateTime='" + updateTime + '\'' +
+				", lastLoginTime='" + lastLoginTime + '\'' +
 				'}';
 	}
 }

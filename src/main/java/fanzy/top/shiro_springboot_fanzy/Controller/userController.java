@@ -6,6 +6,7 @@
  **/
 package fanzy.top.shiro_springboot_fanzy.Controller;
 
+import fanzy.top.shiro_springboot_fanzy.Entity.User;
 import fanzy.top.shiro_springboot_fanzy.Service.userService;
 import fanzy.top.shiro_springboot_fanzy.Utils.Result;
 import org.apache.shiro.SecurityUtils;
@@ -30,7 +31,13 @@ public class userController {
 
 	public Result queryUserByName(@RequestParam String name) {
 		logger.info(userService.queryUserByName(name).toString());
-		return new Result(userService.queryUserByName(name), 200, "");
+		System.out.println("是否拥有 file:delete 权限");
+		System.out.println(SecurityUtils.getSubject().isPermitted("perms[file:add]"));
+
+		Subject subject = SecurityUtils.getSubject();
+		User user = (User) subject.getPrincipal();
+		logger.info(user.toString());
+		return new Result(userService.queryUserByName(name), 200, "登录成功");
 	}
 
 	@GetMapping("/allUsers")
@@ -51,12 +58,12 @@ public class userController {
 			// 用户名不存在
 			UE.printStackTrace();
 			return new Result(null, 202, "用户名不存在");
-		} catch (IncorrectCredentialsException IE){
+		} catch (IncorrectCredentialsException IE) {
 			// 密码错误
 			IE.printStackTrace();
 			return new Result(null, 201, "密码错误");
 		}
-		return new Result(userService.queryUserByName(username),200,"登录成功");
+		return new Result(userService.queryUserByName(username), 200, "登录成功");
 	}
 }
 
