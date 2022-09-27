@@ -1,18 +1,20 @@
 # ==========已完成==========
 ###
-GET http://localhost:8080/api/allUsers
+GET http://localhost:8080/admin/allUsers
 
 # 用户信息查询，
 ###
-GET http://localhost:8080/api/user?name=admin
+GET http://localhost:8080/api/user?name=root
 
 # 登录请求
 ###
-POST http://localhost:8080/api/login?username=admin&password=872359cc44c637cc73b7cd55c06d95e4
+POST http://localhost:8080/login?username=root&password=123
 
 # 个人所拥有的权限，无需admin权限便可查询
 ###
-GET http://localhost:8080/admin/scan?name=admin
+GET http://localhost:8080/user/deleteFile
+
+
 
 # 添加一个权限，需admin权限才可操作
 ###
@@ -37,3 +39,7 @@ Content-Type: application/json
 ###
 # 他人所拥有的权限，需admin权限才可查询
 GET http://localhost:8080/admin/scanOthers?name=admin
+
+###
+# /user/add
+GET http://localhost:8080/user/deleteFile

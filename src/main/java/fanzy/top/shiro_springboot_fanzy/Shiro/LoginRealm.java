@@ -50,10 +50,12 @@ public class LoginRealm extends AuthorizingRealm {
 
 		User user = (User) subject.getPrincipal();
 
-		List<Permission> permissions = permissionService.allPermissions_own(user.getUsername());
-		for (Permission permission : permissions) {
-			if (permission.getPermissionPerms() != null) {
-				info.addStringPermission("perms[" + permission.getPermissionPerms() + "]");
+		List<Permission> perms = permissionService.allPermissions_own(user.getUsername());
+		for (Permission perm : perms) {
+			System.out.println(perm);
+			if (perm.getPermissionPerms() != null && perm.getPermissionOwner()) {
+				info.addStringPermission(perm.getPermissionPerms());
+				// info.addStringPermission("perms[user:deleteFile]");
 			}
 		}
 		return info;

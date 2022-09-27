@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.swing.text.StyledEditorKit;
 import java.io.Serializable;
 import java.util.Date;
 @Data
@@ -21,7 +22,7 @@ public class Permission implements Serializable {
 	private Date createTime;
 	private Date updateTime;
 	private Date lastLoginTime;
-
+	private Boolean permissionOwner;
 
 	@Override
 	public String toString() {
@@ -31,6 +32,7 @@ public class Permission implements Serializable {
 				", permissionName='" + permissionName + '\'' +
 				", permissionUrl='" + permissionUrl + '\'' +
 				", permissionPerms='" + permissionPerms + '\'' +
+				", permissionOwner='" + permissionOwner + '\'' +
 				", createTime='" + createTime + '\'' +
 				", updateTime='" + updateTime + '\'' +
 				", lastLoginTime='" + lastLoginTime + '\'' +
