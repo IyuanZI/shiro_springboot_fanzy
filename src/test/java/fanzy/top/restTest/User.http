@@ -15,8 +15,7 @@ GET http://localhost:8080/admin/moveUser
 GET http://localhost:8080/admin/modifyUser
 
 ###
-GET http://localhost:8080/admin/addPerm
-
+POST http://localhost:8080/admin/addPerm
 
 ###
 GET http://localhost:8080/user/currentUser?name=root

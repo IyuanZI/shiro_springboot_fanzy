@@ -32,7 +32,7 @@ public class permissionService {
 		return permissionDao.addPerm(permission);
 	}
 
-	private Permission findPermission(String username, String permId) {
+	public Permission findPermission(String username, String permId) {
 		List<Permission> permissions = allPermissions_own(username);
 		for (Permission perms : permissions
 		) {

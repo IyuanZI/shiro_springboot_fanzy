@@ -6,6 +6,7 @@
  **/
 package fanzy.top.shiro_springboot_fanzy.Controller;
 
+import fanzy.top.shiro_springboot_fanzy.Entity.Permission;
 import fanzy.top.shiro_springboot_fanzy.Entity.User;
 import fanzy.top.shiro_springboot_fanzy.Service.permissionService;
 import fanzy.top.shiro_springboot_fanzy.Service.userService;
@@ -52,7 +53,8 @@ public class userController {
 
 	@GetMapping("/movePerm")
 	public Result movePerm(@RequestParam String username, @RequestParam String permId) {
-		return new Result(permissionService.movePerm(username, permId), 200, "操作成功");
+		permissionService.movePerm(username, permId);
+		return new Result(permissionService.allPermissions_own(username), 200, "操作成功");
 	}
 
 }
