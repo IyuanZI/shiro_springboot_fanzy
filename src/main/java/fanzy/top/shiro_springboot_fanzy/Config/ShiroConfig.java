@@ -47,22 +47,22 @@ public class ShiroConfig {
 
 		linkedHashMap.put("/login/**", "anon");
 		//
-		linkedHashMap.put("/admin/addUser", "perms[admin_addUser]");
-		linkedHashMap.put("/admin/moveUser", "perms[admin_moveUser]");
-		linkedHashMap.put("/admin/modifyUser", "perms[admin_modifyUser]");
-		linkedHashMap.put("/admin/allUsers", "perms[admin_allUsers]");
-		linkedHashMap.put("/admin/addPerm", "perms[admin_addPerm]");
+		linkedHashMap.put("/admin/addUser", "perms[admin:addUser]");
+		linkedHashMap.put("/admin/moveUser", "perms[admin:moveUser]");
+		linkedHashMap.put("/admin/modifyUser", "perms[admin:modifyUser]");
+		linkedHashMap.put("/admin/allUsers", "perms[admin:allUsers]");
+		linkedHashMap.put("/admin/addPerm", "perms[admin:addPerm]");
 
-		linkedHashMap.put("/user/currentUser", "perms[user_currentUser]");
-		
-		linkedHashMap.put("/user/scanPerms", "perms[user_scanPerms]");
-		linkedHashMap.put("/user/movePerm", "perms[user_movePerm]");
+		linkedHashMap.put("/user/currentUser", "perms[user:currentUser]");
 
-		linkedHashMap.put("/user/addFile", "perms[user_addFile]");
-		linkedHashMap.put("/user/deleteFile", "perms[user_deleteFile]");
+		linkedHashMap.put("/user/scanPerms", "perms[user:scanPerms]");
+		linkedHashMap.put("/user/movePerm", "perms[user:movePerm]");
+
+		linkedHashMap.put("/user/addFile", "perms[user:addFile]");
+		linkedHashMap.put("/user/deleteFile", "perms[user:deleteFile]");
 
 
-		linkedHashMap.put("/user/**", "authc");
+		linkedHashMap.put("/**", "authc");
 		for (String s : linkedHashMap.values()
 		) {
 			System.out.println(s);
