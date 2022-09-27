@@ -17,9 +17,18 @@
         from user
         where username =
               #{name}
-        AND permission_owner != 0
+          AND permission_owner != 0
 
     </select>
+
+    <!--DELETE FROM table_name [WHERE Clause]-->
+
+    <update id="updatePermission" parameterType="fanzy.top.shiro_springboot_fanzy.Entity.Permission">
+        UPDATE user
+        SET permission_owner = 0
+        WHERE username = #{username}
+          AND permission_id = #{permissionId}
+    </update>
 
 
     <select id="addPermission" parameterType="fanzy.top.shiro_springboot_fanzy.Entity.Permission"

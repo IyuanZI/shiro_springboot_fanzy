@@ -1,45 +1,34 @@
 # ==========已完成==========
 ###
-GET http://localhost:8080/admin/allUsers
+POST http://localhost:8080/login?username=admin&password=872359cc44c637cc73b7cd55c06d95e4
 
-# 用户信息查询，
-###
-GET http://localhost:8080/api/user?name=root
-
-# 登录请求
 ###
 POST http://localhost:8080/login?username=root&password=123
 
-# 个人所拥有的权限，无需admin权限便可查询
 ###
-GET http://localhost:8080/user/deleteFile
-
-
-
-# 添加一个权限，需admin权限才可操作
-###
-POST http://localhost:8080/admin/addPerm
-Content-Type: application/json
-
-{
-  "username": "admin",
-  "permissionId": "2-2",
-  "permissionName": "删除文件",
-  "permissionUrl": "/file/delete",
-  "permissionPerms": "file:delete",
-  "createTime": null,
-  "updateTime": null,
-  "lastLoginTime": null
-}
-
-
-
-### ====================未完成====================
+GET http://localhost:8080/admin/addUser
 
 ###
-# 他人所拥有的权限，需admin权限才可查询
-GET http://localhost:8080/admin/scanOthers?name=admin
+GET http://localhost:8080/admin/moveUser
 
 ###
-# /user/add
-GET http://localhost:8080/user/deleteFile
+GET http://localhost:8080/admin/modifyUser
+
+###
+GET http://localhost:8080/admin/addPerm
+
+
+###
+GET http://localhost:8080/user/currentUser?name=root
+
+###
+GET http://localhost:8080/user/addFile
+
+###
+POST http://localhost:8080/user/deleteFile
+
+###
+GET http://localhost:8080/user/scanPerms?name=root
+
+###
+GET http://localhost:8080/user/movePerm?username=admin&permId=3-3

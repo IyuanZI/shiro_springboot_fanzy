@@ -21,6 +21,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@RequestMapping("/user")
 @RestController
 public class userController {
 	private static Logger logger = LoggerFactory.getLogger(userController.class);
@@ -29,24 +30,29 @@ public class userController {
 	@Autowired
 	private userService userService;
 
-	@GetMapping("/user/currentUser")
+	@GetMapping("/currentUser")
 	public Result queryUserByName(@RequestParam String name) {
 		return new Result(userService.queryUserByName(name), 200, "操作成功");
 	}
 
-	@GetMapping("/user/scanPerms")
+	@GetMapping("/scanPerms")
 	public Result allPermissions_own(@RequestParam String name) {
 		return new Result(permissionService.allPermissions_own(name), 200, "查询成功");
 	}
 
-	@GetMapping("/user/addFile")
+	@GetMapping("/addFile")
 	public Result addFile() {
 		return new Result("/file/add", 200, "添加文件");
 	}
 
-	@PostMapping("/user/deleteFile")
+	@PostMapping("/deleteFile")
 	public Result deleteFile() {
 		return new Result("/file/delete", 200, "删除文件");
+	}
+
+	@GetMapping("/movePerm")
+	public Result movePerm(@RequestParam String username, @RequestParam String permId) {
+		return new Result(permissionService.movePerm(username, permId), 200, "操作成功");
 	}
 
 }

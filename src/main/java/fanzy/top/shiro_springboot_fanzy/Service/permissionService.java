@@ -32,5 +32,20 @@ public class permissionService {
 		return permissionDao.addPerm(permission);
 	}
 
+	private Permission findPermission(String username, String permId) {
+		List<Permission> permissions = allPermissions_own(username);
+		for (Permission perms : permissions
+		) {
+			if (perms.getPermissionId().equals(permId)) {
+				return perms;
+			}
+		}
+		return null;
+	}
+
+
+	public Integer movePerm(String username, String permId) {
+		return permissionDao.movePerm(findPermission(username, permId));
+	}
 }
 

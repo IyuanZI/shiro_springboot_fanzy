@@ -13,7 +13,6 @@ import fanzy.top.shiro_springboot_fanzy.Entity.Permission;
 import java.util.List;
 
 public class permissionDaoImpl implements permissionDao {
-
 	@Override
 	public List<Permission> allPermissions_own(String name) {
 		return (List<Permission>) mybatis.excuteQuery(sqlSession -> {
@@ -25,6 +24,13 @@ public class permissionDaoImpl implements permissionDao {
 	public Integer addPerm(Permission permission) {
 		return (Integer) mybatis.executeUpdate(sqlSession -> {
 			return sqlSession.insert("permissionMapper.addPermission", permission);
+		});
+	}
+
+	@Override
+	public Integer movePerm(Permission permission) {
+		return (Integer) mybatis.executeUpdate(sqlSession -> {
+			return sqlSession.update("permissionMapper.updatePermission", permission);
 		});
 	}
 }

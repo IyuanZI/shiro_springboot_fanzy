@@ -54,7 +54,10 @@ public class ShiroConfig {
 		linkedHashMap.put("/admin/addPerm", "perms[admin_addPerm]");
 
 		linkedHashMap.put("/user/currentUser", "perms[user_currentUser]");
+		
 		linkedHashMap.put("/user/scanPerms", "perms[user_scanPerms]");
+		linkedHashMap.put("/user/movePerm", "perms[user_movePerm]");
+
 		linkedHashMap.put("/user/addFile", "perms[user_addFile]");
 		linkedHashMap.put("/user/deleteFile", "perms[user_deleteFile]");
 
