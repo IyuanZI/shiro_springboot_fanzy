@@ -8,6 +8,7 @@ package fanzy.top.shiro_springboot_fanzy.Controller;
 
 import fanzy.top.shiro_springboot_fanzy.Entity.User;
 import fanzy.top.shiro_springboot_fanzy.Service.userService;
+import fanzy.top.shiro_springboot_fanzy.Utils.HttpStatus;
 import fanzy.top.shiro_springboot_fanzy.Utils.Result;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
@@ -36,11 +37,11 @@ public class loginController {
 		} catch (UnknownAccountException UE) {
 			// 用户名不存在
 			UE.printStackTrace();
-			return new Result(null, 403, "用户名不存在");
+			return new Result(null, HttpStatus.NOT_FOUND.code(), HttpStatus.NOT_FOUND.getReasonPhrase());
 		} catch (IncorrectCredentialsException IE) {
 			// 密码错误
 			IE.printStackTrace();
-			return new Result(null, 403, "密码错误");
+			return new Result(null, HttpStatus.FORBIDDEN.code(), HttpStatus.FORBIDDEN.getReasonPhrase());
 		}
 		System.out.println(currentUser.isPermitted("user_deleteFile"));
 
@@ -50,11 +51,18 @@ public class loginController {
 		return new Result(userService.queryUserByName(username), 200, "登录成功");
 	}
 
-
-	@GetMapping("/unauth")
-	public String unauth(){
-		return "unauth";
+	@PostMapping("/regist")
+	public Result regist(User user) {
+ 		// 注册成功
+		if (userService.addUser(user) == 1) {
+			return new Result(userService.queryUserByName(user.getUsername()), 200, "欢迎您，" + user.getUsername());
+		}
+		return new Result(null, HttpStatus.NOT_MODIFIED.code(), HttpStatus.NOT_MODIFIED.getReasonPhrase());
 	}
 
+	@GetMapping("/unauth")
+	public String unauth() {
+		return "unauth";
+	}
 }
 

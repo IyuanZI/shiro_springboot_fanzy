@@ -16,5 +16,7 @@ public interface userDao {
 	User queryUserByName(String name);
 
 	List<User> queryAllUsers();
+
+	Integer addUser(User user);
 }
 

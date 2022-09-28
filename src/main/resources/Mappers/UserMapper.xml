@@ -8,7 +8,7 @@
         select *
         from user
         where username = #{name}
-        AND password IS NOT NULL
+          AND password IS NOT NULL
     </select>
 
     <select id="queryAllUser" resultType="fanzy.top.shiro_springboot_fanzy.Entity.User">
@@ -17,6 +17,15 @@
         where password IS NOT NULL
     </select>
 
+    <select id="addUser" resultType="fanzy.top.shiro_springboot_fanzy.Entity.User">
+        INSERT INTO `zb-shiro`.`user` (`user_id`, `username`, `password`, `salt`, `email`, `phone`, `sex`, `age`,
+                                       `status`, `create_time`, `update_time`, `last_login_time`, `permission_id`,
+                                       `permission_name`, `permission_url`, `permission_perms`, `permission_owner`)
+        VALUES (#{userId}, #{username}, #{password}, #{salt}, #{email},
+                #{phone}, #{sex}, #{age}, #{status}, #{createTime}, #{updateTime}, #{lastLoginTime},
+                '', '', '', '', NULL);
+
+    </select>
 
     <select id="test1111" resultType="string">
         select 'test'

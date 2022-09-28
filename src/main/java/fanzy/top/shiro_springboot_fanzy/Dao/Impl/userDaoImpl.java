@@ -28,5 +28,12 @@ public class userDaoImpl implements userDao {
 		});
 		return users;
 	}
+
+	@Override
+	public Integer addUser(User user) {
+		return (Integer) mybatis.executeUpdate(sqlSession -> {
+			return sqlSession.insert("userMapper.addUser", user);
+		});
+	}
 }
 

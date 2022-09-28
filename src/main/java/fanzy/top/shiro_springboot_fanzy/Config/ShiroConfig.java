@@ -32,8 +32,8 @@ public class ShiroConfig {
 		LinkedHashMap<String, String> linkedHashMap = new LinkedHashMap<>();
 		ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
 		shiroFilterFactoryBean.setSecurityManager(manager);
-		shiroFilterFactoryBean.setLoginUrl("/login");
-		shiroFilterFactoryBean.setUnauthorizedUrl("/unauth");
+		// shiroFilterFactoryBean.setLoginUrl("/login");
+		// shiroFilterFactoryBean.setUnauthorizedUrl("/unauth");
 		/*
 		 * 内置过滤器：
 		 * 	anon:无需认证
@@ -46,6 +46,8 @@ public class ShiroConfig {
 		 * */
 
 		linkedHashMap.put("/login/**", "anon");
+		linkedHashMap.put("/regist/**", "anon");
+
 		//
 		linkedHashMap.put("/admin/addUser", "perms[admin:addUser]");
 		linkedHashMap.put("/admin/moveUser", "perms[admin:moveUser]");
