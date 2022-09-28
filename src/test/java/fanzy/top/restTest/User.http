@@ -31,3 +31,16 @@ GET http://localhost:8080/user/scanPerms?name=root
 
 ###
 GET http://localhost:8080/user/movePerm?username=admin&permId=3-3
+
+###
+POST http://localhost:8080/regist
+Content-Type: application/json
+
+{
+  "userId":"321",
+  "username": "fanzy",
+  "password": "321321",
+  "salt": "",
+  "email": "123",
+  "phone": "123"
+}

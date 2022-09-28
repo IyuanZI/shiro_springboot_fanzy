@@ -16,5 +16,7 @@ git@gitee.com:OnlyLovee/shiro_springboot_fanzy.git
  ### 2022.09.28
 
 -[ ] 密钥加盐存入数据库
--[ ]
+
+### 2022.09.29
+-[ ] 层级管理网
 -[ ] 

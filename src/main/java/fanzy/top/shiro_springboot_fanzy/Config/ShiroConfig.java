@@ -5,6 +5,7 @@ import fanzy.top.shiro_springboot_fanzy.Entity.User;
 import fanzy.top.shiro_springboot_fanzy.Service.permissionService;
 import fanzy.top.shiro_springboot_fanzy.Shiro.LoginRealm;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
@@ -99,7 +100,31 @@ public class ShiroConfig {
 	 * 创建Realm
 	 * */
 	@Bean(name = "LoginRealm")
-	public LoginRealm getRealm() {
-		return new LoginRealm();
+	public LoginRealm getRealm(@Qualifier("credentialsMatcher") HashedCredentialsMatcher matcher) {
+		LoginRealm loginRealm = new LoginRealm();
+		loginRealm.setCredentialsMatcher(matcher);
+		return loginRealm;
+	}
+
+	/**
+	 * 替换当前 Realm 的 credentialsMatcher 属性.
+	 * 直接使用 HashedCredentialsMatcher 对象, 并设置加密算法即可.
+	 * 密码校验规则HashedCredentialsMatcher
+	 * 这个类是为了对密码进行编码的
+	 * 防止密码在数据库中明码表示,当然在登录认证的时候,
+	 * 这个类也负责对form里输入的密码进行编码
+	 * 处理认证匹配处理器
+	 */
+	@Bean("credentialsMatcher")
+	public HashedCredentialsMatcher credentialsMatcher() {
+		HashedCredentialsMatcher matcher = new HashedCredentialsMatcher();
+		//设置加密算法
+		matcher.setHashAlgorithmName("MD5");
+		//设置加密次数
+		matcher.setHashIterations(3);
+		//是否存储为16进制
+		//将setStoredCredentialsHexEncoded设置为true，则需要使用toHex()进行转换成字符串，默认使用的是toBase64()
+		matcher.setStoredCredentialsHexEncoded(true);
+		return matcher;
 	}
 }
