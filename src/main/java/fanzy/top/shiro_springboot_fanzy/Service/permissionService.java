@@ -23,7 +23,10 @@ public class permissionService {
 	private userService userService;
 
 	public List<Permission> allPermissions(String name) {
-		return permissionDao.allPermissions(name);
+		if (permissionDao.allPermissions(name).size() != 0) {
+			return permissionDao.allPermissions(name);
+		}
+		return null;
 	}
 
 	public Integer addPerm(Permission permission) {

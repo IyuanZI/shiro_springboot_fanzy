@@ -18,7 +18,10 @@ public class userDaoImpl implements userDao {
 		User user = (User) mybatis.excuteQuery(sqlSession -> {
 			return sqlSession.selectOne("userMapper.queryUserByName", name);
 		});
-		return user;
+		if (user == null) {
+			return null;
+		} else
+			return user;
 	}
 
 	@Override

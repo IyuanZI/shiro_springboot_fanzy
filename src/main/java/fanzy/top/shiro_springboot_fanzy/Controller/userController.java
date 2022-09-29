@@ -40,7 +40,11 @@ public class userController {
 
 	@GetMapping("/scanPerms")
 	public Result allPermissions_own(@RequestParam String name) {
-		return new Result(permissionService.allPermissions(name), 200, "查询成功");
+		System.out.println(permissionService.allPermissions(name));
+		if (permissionService.allPermissions(name) != null) {
+			return new Result(permissionService.allPermissions(name), 200, "查询成功");
+		}
+		return Result.fail(null, 404, "查询失败");
 	}
 
 	@GetMapping("/addFile")

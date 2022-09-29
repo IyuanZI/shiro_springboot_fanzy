@@ -43,8 +43,7 @@ public class User implements Serializable {
 	private String permissionUrl;
 	private String permissionPerms;
 
-<<<<<<< HEAD
-=======
+
 	@Override
 	public String toString() {
 		return "User---{" +
@@ -58,7 +57,6 @@ public class User implements Serializable {
 				", phone='" + phone + '\'' +
 				", sex=" + sex +
 				", age=" + age +
-				", status=" + status +
 				", createTime=" + createTime +
 				", updateTime=" + updateTime +
 				", lastLoginTime=" + lastLoginTime +
@@ -68,5 +66,4 @@ public class User implements Serializable {
 				", permissionPerms='" + permissionPerms + '\'' +
 				'}';
 	}
->>>>>>> 9beee082bed8bba4271bcc3bf40ea7dcaa52ed39
 }
