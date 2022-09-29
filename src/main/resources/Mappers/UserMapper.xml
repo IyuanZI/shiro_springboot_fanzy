@@ -20,10 +20,17 @@
     <insert id="addUser">
         INSERT INTO `zb-shiro`.`user` (`user_id`, `username`, `password`, `role_id`, `role_name`, `email`, `phone`,
                                        `sex`, `age`,
+<<<<<<< HEAD
                                        `create_time`, `update_time`, `last_login_time`, `permission_id`,
                                        `permission_name`, `permission_url`, `permission_perms`, `permission_owner`)
         VALUES (#{userId}, #{username}, #{password}, #{roleId}, #{roleName}, #{email},
                 #{phone}, #{sex}, #{age}, #{createTime}, #{updateTime}, #{lastLoginTime},
+=======
+                                       `status`, `create_time`, `update_time`, `last_login_time`, `permission_id`,
+                                       `permission_name`, `permission_url`, `permission_perms`, `permission_owner`)
+        VALUES (#{userId}, #{username}, #{password}, #{roleId}, #{roleName}, #{email},
+                #{phone}, #{sex}, #{age}, #{status}, #{createTime}, #{updateTime}, #{lastLoginTime},
+>>>>>>> 9beee082bed8bba4271bcc3bf40ea7dcaa52ed39
                 '', '', '', '', NULL);
 
     </insert>
