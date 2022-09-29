@@ -27,7 +27,8 @@ public class User implements Serializable {
 	private Integer userId;
 	private String username;
 	private String password;
-	private String salt;
+	private Integer roleId;
+	private String roleName;
 	private String email;
 	private String phone;
 	private int sex;
@@ -48,7 +49,8 @@ public class User implements Serializable {
 				", userId=" + userId +
 				", username='" + username + '\'' +
 				", password='" + password + '\'' +
-				", salt='" + salt + '\'' +
+				", roleId='" + roleId + '\'' +
+				", roleName='" + roleName + '\'' +
 				", email='" + email + '\'' +
 				", phone='" + phone + '\'' +
 				", sex=" + sex +

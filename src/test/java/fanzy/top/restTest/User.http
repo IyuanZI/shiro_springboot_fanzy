@@ -37,10 +37,6 @@ POST http://localhost:8080/regist
 Content-Type: application/json
 
 {
-  "userId":"321",
-  "username": "fanzy",
-  "password": "321321",
-  "salt": "",
-  "email": "123",
-  "phone": "123"
+  "username": "admin",
+  "password": "321"
 }
