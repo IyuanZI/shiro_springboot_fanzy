@@ -16,7 +16,7 @@
                last_login_time
         from user
         where username = #{name}
-        AND permission_perms != ''
+          AND permission_perms != ''
     </select>
 
     <!--DELETE FROM table_name [WHERE Clause]-->
@@ -28,7 +28,6 @@
           AND permission_id = #{permissionId}
     </update>
 
-
     <select id="addPermission" parameterType="fanzy.top.shiro_springboot_fanzy.Entity.Permission"
             resultType="fanzy.top.shiro_springboot_fanzy.Entity.Permission">
         INSERT INTO `zb-shiro`.`user` (`username`, `permission_id`,
@@ -39,5 +38,35 @@
 
 
     </select>
+
+    <insert id="initUserPerm" parameterType="fanzy.top.shiro_springboot_fanzy.Entity.User"
+    >
+        INSERT INTO `zb-shiro`.`user` (`username`, `create_time`, `update_time`, `last_login_time`, `permission_id`, `permission_name`, `permission_url`, `permission_perms`, `permission_owner`) VALUES (#{username},#{createTime}, #{updateTime}, #{updateTime} , '1-1', '添加用户', '/admin/addUser', 'admin:addUser', 0);
+        INSERT INTO `zb-shiro`.`user` (`username`, `create_time`, `update_time`, `last_login_time`, `permission_id`, `permission_name`, `permission_url`, `permission_perms`, `permission_owner`) VALUES (#{username},#{createTime}, #{updateTime}, #{updateTime} , '1-2', '删除用户', '/admin/moveUser', 'admin:moveUser', 0);
+        INSERT INTO `zb-shiro`.`user` (`username`, `create_time`, `update_time`, `last_login_time`, `permission_id`, `permission_name`, `permission_url`, `permission_perms`, `permission_owner`) VALUES (#{username},#{createTime}, #{updateTime}, #{updateTime} , '1-3', '更改用户信息', '/admin/modifyUser', 'admin:modifyUser', 0);
+        INSERT INTO `zb-shiro`.`user` (`username`, `create_time`, `update_time`, `last_login_time`, `permission_id`, `permission_name`, `permission_url`, `permission_perms`, `permission_owner`) VALUES (#{username},#{createTime}, #{updateTime}, #{updateTime} , '1-4', '用户信息', '/admin/allUsers', 'admin:allUsers', 0);
+        INSERT INTO `zb-shiro`.`user` (`username`, `create_time`, `update_time`, `last_login_time`, `permission_id`, `permission_name`, `permission_url`, `permission_perms`, `permission_owner`) VALUES (#{username},#{createTime}, #{updateTime}, #{updateTime} , '1-5', '当前用户信息', '/user/currentUser', 'user:currentUser', 1);
+        INSERT INTO `zb-shiro`.`user` (`username`, `create_time`, `update_time`, `last_login_time`, `permission_id`, `permission_name`, `permission_url`, `permission_perms`, `permission_owner`) VALUES (#{username},#{createTime}, #{updateTime}, #{updateTime} , '2-1', '添加文件', '/user/addFile', 'user:addFile', 1);
+        INSERT INTO `zb-shiro`.`user` (`username`, `create_time`, `update_time`, `last_login_time`, `permission_id`, `permission_name`, `permission_url`, `permission_perms`, `permission_owner`) VALUES (#{username},#{createTime}, #{updateTime}, #{updateTime} , '2-2', '删除文件', '/user/deleteFile', 'user:deleteFile', 1);
+        INSERT INTO `zb-shiro`.`user` (`username`, `create_time`, `update_time`, `last_login_time`, `permission_id`, `permission_name`, `permission_url`, `permission_perms`, `permission_owner`) VALUES (#{username},#{createTime}, #{updateTime}, #{updateTime} , '3-1', '授权', '/admin/addPerm', 'admin:addPerm', 0);
+        INSERT INTO `zb-shiro`.`user` (`username`, `create_time`, `update_time`, `last_login_time`, `permission_id`, `permission_name`, `permission_url`, `permission_perms`, `permission_owner`) VALUES (#{username},#{createTime}, #{updateTime}, #{updateTime} , '3-2', '当前用户权限', '/user/scanPerms', 'user:scanPerms', 1);
+
+    </insert>
+
+    <insert id="initManagerPerm" parameterType="fanzy.top.shiro_springboot_fanzy.Entity.User"
+    >
+        INSERT INTO `zb-shiro`.`user` ( `username`, `create_time`, `update_time`, `last_login_time`, `permission_id`, `permission_name`, `permission_url`, `permission_perms`, `permission_owner`) VALUES (#{username}, #{createTime}, #{updateTime}, #{lastLoginTime}, '1-1', '添加用户', '/admin/addUser', 'admin:addUser', 0);
+        INSERT INTO `zb-shiro`.`user` ( `username`, `create_time`, `update_time`, `last_login_time`, `permission_id`, `permission_name`, `permission_url`, `permission_perms`, `permission_owner`) VALUES (#{username}, #{createTime}, #{updateTime}, #{lastLoginTime}, '1-2', '删除用户', '/admin/moveUser', 'admin:moveUser', 0);
+        INSERT INTO `zb-shiro`.`user` ( `username`, `create_time`, `update_time`, `last_login_time`, `permission_id`, `permission_name`, `permission_url`, `permission_perms`, `permission_owner`) VALUES (#{username}, #{createTime}, #{updateTime}, #{lastLoginTime}, '1-3', '更改用户信息', '/admin/modifyUser', 'admin:modifyUser', 1);
+        INSERT INTO `zb-shiro`.`user` ( `username`, `create_time`, `update_time`, `last_login_time`, `permission_id`, `permission_name`, `permission_url`, `permission_perms`, `permission_owner`) VALUES (#{username}, #{createTime}, #{updateTime}, #{lastLoginTime}, '1-4', '用户信息', '/admin/allUsers', 'admin:allUsers', 1);
+        INSERT INTO `zb-shiro`.`user` ( `username`, `create_time`, `update_time`, `last_login_time`, `permission_id`, `permission_name`, `permission_url`, `permission_perms`, `permission_owner`) VALUES (#{username}, #{createTime}, #{updateTime}, #{lastLoginTime}, '1-5', '当前用户信息', '/user/currentUser', 'user:currentUser', 1);
+        INSERT INTO `zb-shiro`.`user` ( `username`, `create_time`, `update_time`, `last_login_time`, `permission_id`, `permission_name`, `permission_url`, `permission_perms`, `permission_owner`) VALUES (#{username}, #{createTime}, #{updateTime}, #{lastLoginTime}, '2-1', '添加文件', '/user/addFile', 'user:addFile', 0);
+        INSERT INTO `zb-shiro`.`user` ( `username`, `create_time`, `update_time`, `last_login_time`, `permission_id`, `permission_name`, `permission_url`, `permission_perms`, `permission_owner`) VALUES (#{username}, #{createTime}, #{updateTime}, #{lastLoginTime}, '2-2', '删除文件', '/user/deleteFile', 'user:deleteFile', 0);
+        INSERT INTO `zb-shiro`.`user` ( `username`, `create_time`, `update_time`, `last_login_time`, `permission_id`, `permission_name`, `permission_url`, `permission_perms`, `permission_owner`) VALUES (#{username}, #{createTime}, #{updateTime}, #{lastLoginTime}, '3-1', '授权', '/admin/addPerm', 'admin:addPerm', 0);
+        INSERT INTO `zb-shiro`.`user` ( `username`, `create_time`, `update_time`, `last_login_time`, `permission_id`, `permission_name`, `permission_url`, `permission_perms`, `permission_owner`) VALUES (#{username}, #{createTime}, #{updateTime}, #{lastLoginTime}, '3-2', '当前用户权限', '/user/scanPerms', 'user:scanPerms', 1);
+
+
+
+    </insert>
 
 </mapper>

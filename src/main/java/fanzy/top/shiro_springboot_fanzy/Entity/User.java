@@ -3,6 +3,7 @@ package fanzy.top.shiro_springboot_fanzy.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,6 +19,7 @@ import java.util.List;
  * @date 2018年7月11日
  */
 @Data
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 public class User implements Serializable {
@@ -27,12 +29,12 @@ public class User implements Serializable {
 	private Integer userId;
 	private String username;
 	private String password;
-	private String salt;
+	private Integer roleId;
+	private String roleName;
 	private String email;
 	private String phone;
 	private int sex;
 	private int age;
-	private int status;
 	private Date createTime;
 	private Date updateTime;
 	private Date lastLoginTime;
@@ -41,26 +43,4 @@ public class User implements Serializable {
 	private String permissionUrl;
 	private String permissionPerms;
 
-	@Override
-	public String toString() {
-		return "User---{" +
-				"id=" + id +
-				", userId=" + userId +
-				", username='" + username + '\'' +
-				", password='" + password + '\'' +
-				", salt='" + salt + '\'' +
-				", email='" + email + '\'' +
-				", phone='" + phone + '\'' +
-				", sex=" + sex +
-				", age=" + age +
-				", status=" + status +
-				", createTime=" + createTime +
-				", updateTime=" + updateTime +
-				", lastLoginTime=" + lastLoginTime +
-				", permissionId='" + permissionId + '\'' +
-				", permissionName='" + permissionName + '\'' +
-				", permissionUrl='" + permissionUrl + '\'' +
-				", permissionPerms='" + permissionPerms + '\'' +
-				'}';
-	}
 }

@@ -55,7 +55,7 @@ public class LoginRealm extends AuthorizingRealm {
 
 		User user = (User) subject.getPrincipal();
 
-		List<Permission> perms = permissionService.allPermissions_own(user.getUsername());
+		List<Permission> perms = permissionService.allPermissions(user.getUsername());
 		for (Permission perm : perms) {
 			System.out.println(perm);
 			if (perm.getPermissionPerms() != null && perm.getPermissionOwner()) {

@@ -15,23 +15,26 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
+
 @RequestMapping("/admin")
 @RestController
 public class AdminController {
-	@Autowired
+	@Resource
 	private permissionService permissionService;
 
-	@Autowired
+	@Resource
 	private userService userService;
 
 	@GetMapping("/allUsers")
 	public Result queryAllUsers() {
-		return new Result(userService.queyruAllUsers(), 200, "");
+		return Result.success(userService.queyruAllUsers());
 	}
 
 	@PostMapping("/addPerm")
 	public Result addPerm(@RequestBody Permission permission) {
-		return new Result(permissionService.addPerm(permission), "操作成功");
+		return Result.success(permissionService.addPerm(permission));
 	}
 
 	@GetMapping("/addUser")

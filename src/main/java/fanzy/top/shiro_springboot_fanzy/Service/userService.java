@@ -6,9 +6,12 @@
  **/
 package fanzy.top.shiro_springboot_fanzy.Service;
 
+import fanzy.top.shiro_springboot_fanzy.Dao.Impl.permissionDaoImpl;
 import fanzy.top.shiro_springboot_fanzy.Dao.Impl.userDaoImpl;
+import fanzy.top.shiro_springboot_fanzy.Dao.permissionDao;
 import fanzy.top.shiro_springboot_fanzy.Dao.userDao;
 import fanzy.top.shiro_springboot_fanzy.Entity.User;
+import fanzy.top.shiro_springboot_fanzy.Utils.Result;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -18,15 +21,38 @@ import java.util.List;
 public class userService {
 	private userDao userDao = new userDaoImpl();
 
+	private permissionDao permissionDao = new permissionDaoImpl();
+
 	public User queryUserByName(String name) {
 		return userDao.queryUserByName(name);
 	}
 
-	public Integer addUser(User user) {
+	public User addUser(User user) {
 		user.setCreateTime(new Date());
 		user.setLastLoginTime(new Date());
 		user.setUpdateTime(new Date());
-		return userDao.addUser(user);
+
+		switch (user.getRoleId()) {
+			case 1:
+				//	超级管理员
+				return null;
+			case 2:
+				//	经理
+				user.setRoleName("经理");
+				if (userDao.addUser(user) == 1) {
+					permissionDao.initManagerPerm(user);
+					return queryUserByName(user.getUsername());
+				} else return null;
+			case 3:
+				//	普通用户
+				user.setRoleName("普通用户");
+				if (userDao.addUser(user) == 1) {
+					permissionDao.initUserPerm(user);
+					return queryUserByName(user.getUsername());
+				} else return null;
+			default:
+				return null;
+		}
 	}
 
 

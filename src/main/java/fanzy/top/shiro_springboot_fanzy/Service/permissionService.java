@@ -12,17 +12,18 @@ import fanzy.top.shiro_springboot_fanzy.Entity.Permission;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
 
 @Service
 public class permissionService {
 	private permissionDao permissionDao = new permissionDaoImpl();
-	@Autowired
+	@Resource
 	private userService userService;
 
-	public List<Permission> allPermissions_own(String name) {
-		return permissionDao.allPermissions_own(name);
+	public List<Permission> allPermissions(String name) {
+		return permissionDao.allPermissions(name);
 	}
 
 	public Integer addPerm(Permission permission) {
@@ -33,7 +34,7 @@ public class permissionService {
 	}
 
 	public Permission findPermission(String username, String permId) {
-		List<Permission> permissions = allPermissions_own(username);
+		List<Permission> permissions = allPermissions(username);
 		for (Permission perms : permissions
 		) {
 			if (perms.getPermissionId().equals(permId)) {

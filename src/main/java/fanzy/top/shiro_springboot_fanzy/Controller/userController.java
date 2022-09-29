@@ -22,13 +22,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
+
 @RequestMapping("/user")
 @RestController
 public class userController {
 	private static Logger logger = LoggerFactory.getLogger(userController.class);
-	@Autowired
+	@Resource
 	private permissionService permissionService;
-	@Autowired
+	@Resource
 	private userService userService;
 
 	@GetMapping("/currentUser")
@@ -38,7 +40,7 @@ public class userController {
 
 	@GetMapping("/scanPerms")
 	public Result allPermissions_own(@RequestParam String name) {
-		return new Result(permissionService.allPermissions_own(name), 200, "查询成功");
+		return new Result(permissionService.allPermissions(name), 200, "查询成功");
 	}
 
 	@GetMapping("/addFile")
@@ -54,7 +56,7 @@ public class userController {
 	@GetMapping("/movePerm")
 	public Result movePerm(@RequestParam String username, @RequestParam String permId) {
 		permissionService.movePerm(username, permId);
-		return new Result(permissionService.allPermissions_own(username), 200, "操作成功");
+		return new Result(permissionService.allPermissions(username), 200, "操作成功");
 	}
 
 }

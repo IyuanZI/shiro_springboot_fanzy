@@ -7,6 +7,7 @@
 package fanzy.top.shiro_springboot_fanzy.Controller;
 
 import fanzy.top.shiro_springboot_fanzy.Entity.User;
+import fanzy.top.shiro_springboot_fanzy.Service.permissionService;
 import fanzy.top.shiro_springboot_fanzy.Service.userService;
 import fanzy.top.shiro_springboot_fanzy.Utils.HttpStatus;
 import fanzy.top.shiro_springboot_fanzy.Utils.Result;
@@ -25,11 +26,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
+
 @RestController
 public class loginController {
 	private static Logger logger = LoggerFactory.getLogger(loginController.class);
-	@Autowired
+	@Resource
 	private userService userService;
+	@Resource
+	private permissionService permissionService;
 
 	@PostMapping("/login")
 	public Result checkLogin(String username, String password) {
@@ -46,12 +51,7 @@ public class loginController {
 			IE.printStackTrace();
 			return new Result(null, HttpStatus.FORBIDDEN.code(), HttpStatus.FORBIDDEN.getReasonPhrase());
 		}
-		System.out.println(currentUser.isPermitted("user_deleteFile"));
-
-
-		User user = (User) currentUser.getPrincipal();
-		logger.info(user.toString());
-		return new Result(userService.queryUserByName(username), 200, "登录成功");
+		return new Result(userService.queryUserByName(token.getUsername()), 200, "登录成功");
 	}
 
 	@PostMapping("/regist")
@@ -61,17 +61,17 @@ public class loginController {
 		Object salt = ByteSource.Util.bytes(user.getUsername());
 		String newPassword = new SimpleHash("MD5", user.getPassword(), salt, 3).toHex();
 		user.setPassword(newPassword);
-		System.out.println(newPassword);
+		userService.addUser(user);
 		// 注册成功
-		if (userService.addUser(user) == 1) {
-			return new Result(userService.queryUserByName(user.getUsername()), 200, "欢迎您，" + user.getUsername());
+		if (user == null) {
+			Result.fail(false, 500, "注册失败");
 		}
-		return new Result(null, HttpStatus.NOT_MODIFIED.code(), HttpStatus.NOT_MODIFIED.getReasonPhrase());
+		return new Result(200, "欢迎您，" + user.getUsername());
 	}
 
 	@GetMapping("/unauth")
 	public String unauth() {
-		return "unauth";
+		return "/unauth";
 	}
 }
 
