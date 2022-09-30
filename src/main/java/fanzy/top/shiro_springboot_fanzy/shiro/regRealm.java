@@ -4,7 +4,7 @@
  * @author: fanzy
  * @create: 2022-09-28 15:56
  **/
-package fanzy.top.shiro_springboot_fanzy.Shiro;
+package fanzy.top.shiro_springboot_fanzy.shiro;
 
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;

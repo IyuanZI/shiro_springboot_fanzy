@@ -4,12 +4,11 @@
  * @author: fanzy
  * @create: 2022-09-24 10:49
  **/
-package fanzy.top.shiro_springboot_fanzy.Service;
+package fanzy.top.shiro_springboot_fanzy.service;
 
-import fanzy.top.shiro_springboot_fanzy.Dao.Impl.permissionDaoImpl;
-import fanzy.top.shiro_springboot_fanzy.Dao.permissionDao;
-import fanzy.top.shiro_springboot_fanzy.Entity.Permission;
-import org.springframework.beans.factory.annotation.Autowired;
+import fanzy.top.shiro_springboot_fanzy.dao.Impl.permissionDaoImpl;
+import fanzy.top.shiro_springboot_fanzy.dao.permissionDao;
+import fanzy.top.shiro_springboot_fanzy.entity.Permission;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

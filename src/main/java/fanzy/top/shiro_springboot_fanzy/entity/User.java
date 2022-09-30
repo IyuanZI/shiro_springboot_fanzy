@@ -1,22 +1,18 @@
-package fanzy.top.shiro_springboot_fanzy.Entity;
+package fanzy.top.shiro_springboot_fanzy.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Transient;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 /**
- * @author superzheng
+ * @author Fanzy
  * @version V1.0
- * @date 2018年7月11日
+ * @date 2022-08-10 17:34
  */
 @Data
 @ToString
@@ -46,7 +42,7 @@ public class User implements Serializable {
 
 	@Override
 	public String toString() {
-		return "User---{" +
+		return "User=={" +
 				"id=" + id +
 				", userId=" + userId +
 				", username='" + username + '\'' +

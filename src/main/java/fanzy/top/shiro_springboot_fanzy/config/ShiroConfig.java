@@ -1,24 +1,16 @@
-package fanzy.top.shiro_springboot_fanzy.Config;
+package fanzy.top.shiro_springboot_fanzy.config;
 
-import fanzy.top.shiro_springboot_fanzy.Controller.userController;
-import fanzy.top.shiro_springboot_fanzy.Entity.User;
-import fanzy.top.shiro_springboot_fanzy.Service.permissionService;
-import fanzy.top.shiro_springboot_fanzy.Shiro.LoginRealm;
-import org.apache.shiro.SecurityUtils;
+import fanzy.top.shiro_springboot_fanzy.shiro.LoginRealm;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
-import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
-import org.apache.shiro.web.mgt.DefaultWebSessionStorageEvaluator;
 import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.beans.Customizer;
 import java.util.LinkedHashMap;
 
 @Configuration

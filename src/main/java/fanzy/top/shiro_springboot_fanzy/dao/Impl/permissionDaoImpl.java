@@ -4,16 +4,24 @@
  * @author: fanzy
  * @create: 2022-09-23 14:36
  **/
-package fanzy.top.shiro_springboot_fanzy.Dao.Impl;
+package fanzy.top.shiro_springboot_fanzy.dao.Impl;
 
-import fanzy.top.shiro_springboot_fanzy.Config.mybatis;
-import fanzy.top.shiro_springboot_fanzy.Dao.permissionDao;
-import fanzy.top.shiro_springboot_fanzy.Entity.Permission;
-import fanzy.top.shiro_springboot_fanzy.Entity.User;
+import fanzy.top.shiro_springboot_fanzy.config.mybatis;
+import fanzy.top.shiro_springboot_fanzy.dao.permissionDao;
+import fanzy.top.shiro_springboot_fanzy.entity.Permission;
+import fanzy.top.shiro_springboot_fanzy.entity.User;
 
 import java.util.List;
 
 public class permissionDaoImpl implements permissionDao {
+	/**
+	 * 权限列表
+	 *
+	 * @param name
+	 * @return java.util.List<fanzy.top.shiro_springboot_fanzy.Entity.Permission>
+	 * @author fanzy
+	 * @date 2022-09-30 15:01
+	 */
 	@Override
 	public List<Permission> allPermissions(String name) {
 		return (List<Permission>) mybatis.excuteQuery(sqlSession -> {
@@ -21,6 +29,14 @@ public class permissionDaoImpl implements permissionDao {
 		});
 	}
 
+	/**
+	 * 增加一个权限
+	 *
+	 * @param permission
+	 * @return java.lang.Integer
+	 * @author fanzy
+	 * @date 2022-09-30 15:01
+	 */
 	@Override
 	public Integer addPerm(Permission permission) {
 		return (Integer) mybatis.executeUpdate(sqlSession -> {
@@ -28,6 +44,14 @@ public class permissionDaoImpl implements permissionDao {
 		});
 	}
 
+	/**
+	 * 移除一个权限
+	 *
+	 * @param permission
+	 * @return java.lang.Integer
+	 * @author fanzy
+	 * @date 2022-09-30 15:01
+	 */
 	@Override
 	public Integer movePerm(Permission permission) {
 		return (Integer) mybatis.executeUpdate(sqlSession -> {
@@ -35,6 +59,14 @@ public class permissionDaoImpl implements permissionDao {
 		});
 	}
 
+	/**
+	 * 普通用户的初始化权限
+	 *
+	 * @param user
+	 * @return java.lang.Integer
+	 * @author fanzy
+	 * @date 2022-09-30 15:02
+	 */
 	@Override
 	public Integer initUserPerm(User user) {
 		return (Integer) mybatis.executeUpdate(sqlSession -> {
@@ -42,6 +74,14 @@ public class permissionDaoImpl implements permissionDao {
 		});
 	}
 
+	/**
+	 * 经理的初始化权限
+	 *
+	 * @param user
+	 * @return java.lang.Integer
+	 * @author fanzy
+	 * @date 2022-09-30 15:02
+	 */
 	@Override
 	public Integer initManagerPerm(User user) {
 		return (Integer) mybatis.executeUpdate(sqlSession -> {

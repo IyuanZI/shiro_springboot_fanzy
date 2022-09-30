@@ -4,14 +4,13 @@
  * @author: fanzy
  * @create: 2022-09-22 11:23
  **/
-package fanzy.top.shiro_springboot_fanzy.Service;
+package fanzy.top.shiro_springboot_fanzy.service;
 
-import fanzy.top.shiro_springboot_fanzy.Dao.Impl.permissionDaoImpl;
-import fanzy.top.shiro_springboot_fanzy.Dao.Impl.userDaoImpl;
-import fanzy.top.shiro_springboot_fanzy.Dao.permissionDao;
-import fanzy.top.shiro_springboot_fanzy.Dao.userDao;
-import fanzy.top.shiro_springboot_fanzy.Entity.User;
-import fanzy.top.shiro_springboot_fanzy.Utils.Result;
+import fanzy.top.shiro_springboot_fanzy.dao.Impl.permissionDaoImpl;
+import fanzy.top.shiro_springboot_fanzy.dao.Impl.userDaoImpl;
+import fanzy.top.shiro_springboot_fanzy.dao.permissionDao;
+import fanzy.top.shiro_springboot_fanzy.dao.userDao;
+import fanzy.top.shiro_springboot_fanzy.entity.User;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -42,14 +41,18 @@ public class userService {
 				if (userDao.addUser(user) == 1) {
 					permissionDao.initManagerPerm(user);
 					return queryUserByName(user.getUsername());
-				} else return null;
+				} else {
+					return null;
+				}
 			case 3:
 				//	普通用户
 				user.setRoleName("普通用户");
 				if (userDao.addUser(user) == 1) {
 					permissionDao.initUserPerm(user);
 					return queryUserByName(user.getUsername());
-				} else return null;
+				} else {
+					return null;
+				}
 			default:
 				return null;
 		}

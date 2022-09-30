@@ -4,16 +4,12 @@
  * @author: fanzy
  * @create: 2022-09-24 10:54
  **/
-package fanzy.top.shiro_springboot_fanzy.Controller;
+package fanzy.top.shiro_springboot_fanzy.controller;
 
-import fanzy.top.shiro_springboot_fanzy.Entity.Permission;
-import fanzy.top.shiro_springboot_fanzy.Service.permissionService;
-import fanzy.top.shiro_springboot_fanzy.Service.userService;
-import fanzy.top.shiro_springboot_fanzy.Utils.Result;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.apache.shiro.subject.Subject;
-import org.springframework.beans.factory.annotation.Autowired;
+import fanzy.top.shiro_springboot_fanzy.entity.Permission;
+import fanzy.top.shiro_springboot_fanzy.service.permissionService;
+import fanzy.top.shiro_springboot_fanzy.service.userService;
+import fanzy.top.shiro_springboot_fanzy.utils.Result;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;

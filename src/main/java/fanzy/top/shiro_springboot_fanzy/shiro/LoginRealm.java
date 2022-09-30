@@ -4,21 +4,16 @@
  * @author: fanzy
  * @create: 2022-09-23 11:33
  **/
-package fanzy.top.shiro_springboot_fanzy.Shiro;
+package fanzy.top.shiro_springboot_fanzy.shiro;
 
-import fanzy.top.shiro_springboot_fanzy.Entity.Permission;
-import fanzy.top.shiro_springboot_fanzy.Entity.User;
-import fanzy.top.shiro_springboot_fanzy.Service.permissionService;
-import fanzy.top.shiro_springboot_fanzy.Service.userService;
-import org.apache.ibatis.javassist.Loader;
+import fanzy.top.shiro_springboot_fanzy.entity.Permission;
+import fanzy.top.shiro_springboot_fanzy.entity.User;
+import fanzy.top.shiro_springboot_fanzy.service.permissionService;
+import fanzy.top.shiro_springboot_fanzy.service.userService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
-import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
-import org.apache.shiro.crypto.hash.Md5Hash;
-import org.apache.shiro.crypto.hash.SimpleHash;
-import org.apache.shiro.mgt.SubjectFactory;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
@@ -27,12 +22,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.ejb.BeforeCompletion;
-import java.security.Security;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 public class LoginRealm extends AuthorizingRealm {
 	private static Logger logger = LoggerFactory.getLogger(LoginRealm.class);

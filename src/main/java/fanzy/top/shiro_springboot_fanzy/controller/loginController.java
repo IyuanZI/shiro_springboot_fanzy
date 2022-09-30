@@ -4,13 +4,13 @@
  * @author: fanzy
  * @create: 2022-09-27 11:35
  **/
-package fanzy.top.shiro_springboot_fanzy.Controller;
+package fanzy.top.shiro_springboot_fanzy.controller;
 
-import fanzy.top.shiro_springboot_fanzy.Entity.User;
-import fanzy.top.shiro_springboot_fanzy.Service.permissionService;
-import fanzy.top.shiro_springboot_fanzy.Service.userService;
-import fanzy.top.shiro_springboot_fanzy.Utils.HttpStatus;
-import fanzy.top.shiro_springboot_fanzy.Utils.Result;
+import fanzy.top.shiro_springboot_fanzy.entity.User;
+import fanzy.top.shiro_springboot_fanzy.service.permissionService;
+import fanzy.top.shiro_springboot_fanzy.service.userService;
+import fanzy.top.shiro_springboot_fanzy.utils.HttpStatus;
+import fanzy.top.shiro_springboot_fanzy.utils.Result;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
@@ -20,7 +20,6 @@ import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.ByteSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -37,6 +36,15 @@ public class loginController {
 	@Resource
 	private permissionService permissionService;
 
+	/**
+	 * 登录
+	 *
+	 * @param username
+	 * @param password
+	 * @return fanzy.top.shiro_springboot_fanzy.Utils.Result
+	 * @author fanzy
+	 * @date 2022-09-30 15:03
+	 */
 	@PostMapping("/login")
 	public Result checkLogin(String username, String password) {
 		Subject currentUser = SecurityUtils.getSubject();
@@ -55,6 +63,14 @@ public class loginController {
 		return new Result(userService.queryUserByName(token.getUsername()), 200, "登录成功");
 	}
 
+	/**
+	 * 注册
+	 *
+	 * @param user
+	 * @return fanzy.top.shiro_springboot_fanzy.Utils.Result
+	 * @author fanzy
+	 * @date 2022-09-30 15:04
+	 */
 	@PostMapping("/regist")
 	public Result regist(@RequestBody User user) {
 		logger.info(user.toString());
@@ -70,12 +86,27 @@ public class loginController {
 		return new Result(200, "欢迎您，" + user.getUsername());
 	}
 
+	/**
+	 * 注册
+	 *
+	 * @param session
+	 * @return fanzy.top.shiro_springboot_fanzy.Utils.Result
+	 * @author fanzy
+	 * @date 2022-09-30 15:05
+	 */
 	@GetMapping("/logout")
 	public Result logout(HttpSession session) {
 		session.invalidate();
 		return Result.success(null);
 	}
 
+	/**
+	 * 用户未授权
+	 *
+	 * @return java.lang.String
+	 * @author fanzy
+	 * @date 2022-09-30 15:05
+	 */
 	@GetMapping("/unauth")
 	public String unauth() {
 		return "redirect:/unauth";

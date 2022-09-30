@@ -1,29 +1,21 @@
+
+package fanzy.top.shiro_springboot_fanzy.controller;
+
+import fanzy.top.shiro_springboot_fanzy.service.permissionService;
+import fanzy.top.shiro_springboot_fanzy.service.userService;
+import fanzy.top.shiro_springboot_fanzy.utils.Result;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
+
 /**
  * @program: shiro_springboot_fanzy
  * @description:
  * @author: fanzy
  * @create: 2022-09-22 11:03
  **/
-package fanzy.top.shiro_springboot_fanzy.Controller;
-
-import fanzy.top.shiro_springboot_fanzy.Entity.Permission;
-import fanzy.top.shiro_springboot_fanzy.Entity.User;
-import fanzy.top.shiro_springboot_fanzy.Service.permissionService;
-import fanzy.top.shiro_springboot_fanzy.Service.userService;
-import fanzy.top.shiro_springboot_fanzy.Utils.Result;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.IncorrectCredentialsException;
-import org.apache.shiro.authc.UnknownAccountException;
-import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.apache.shiro.subject.Subject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import javax.annotation.Resource;
-
 @RequestMapping("/user")
 @RestController
 public class userController {
@@ -33,6 +25,12 @@ public class userController {
 	@Resource
 	private userService userService;
 
+	/**
+	 * @param name
+	 * @return fanzy.top.shiro_springboot_fanzy.Utils.Result
+	 * @author fanzy
+	 * @date 2022-09-30 14:41
+	 */
 	@GetMapping("/currentUser")
 	public Result queryUserByName(@RequestParam String name) {
 		return new Result(userService.queryUserByName(name), 200, "操作成功");

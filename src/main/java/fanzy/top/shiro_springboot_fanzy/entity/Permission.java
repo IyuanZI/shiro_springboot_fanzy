@@ -1,16 +1,13 @@
-package fanzy.top.shiro_springboot_fanzy.Entity;
+package fanzy.top.shiro_springboot_fanzy.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.swing.text.StyledEditorKit;
 import java.io.Serializable;
 import java.util.Date;
+
 @Data
 @ToString
 @NoArgsConstructor

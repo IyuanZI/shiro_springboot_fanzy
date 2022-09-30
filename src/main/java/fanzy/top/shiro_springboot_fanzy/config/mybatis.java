@@ -4,7 +4,7 @@
  * @author: fanzy
  * @create: 2022-08-10 17:34
  **/
-package fanzy.top.shiro_springboot_fanzy.Config;
+package fanzy.top.shiro_springboot_fanzy.config;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -12,7 +12,6 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.Reader;
 import java.util.function.Function;
 

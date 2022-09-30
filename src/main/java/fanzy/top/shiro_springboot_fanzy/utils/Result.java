@@ -4,7 +4,7 @@
  * @author: fanzy
  * @create: 2022-09-22 14:21
  **/
-package fanzy.top.shiro_springboot_fanzy.Utils;
+package fanzy.top.shiro_springboot_fanzy.utils;
 
 import lombok.Data;
 

@@ -4,7 +4,7 @@
  * @author: fanzy
  * @create: 2022-09-28 10:40
  **/
-package fanzy.top.shiro_springboot_fanzy.Utils;
+package fanzy.top.shiro_springboot_fanzy.utils;
 
 //
 // Source code recreated from a .class file by IntelliJ IDEA
@@ -144,6 +144,7 @@ public enum HttpStatus {
 		return this.is4xxClientError() || this.is5xxServerError();
 	}
 
+	@Override
 	public String toString() {
 		return this.code + " " + this.name();
 	}
