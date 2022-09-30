@@ -29,7 +29,7 @@ git@gitee.com:OnlyLovee/shiro_springboot_fanzy.git
 
 ### 2022.09.30
 
--[ ] 前端：
+-[x] 前端：
     - 加载数据提供loading效果
     - 管理员对用户信息更改的页面
 -[ ] 层级管理网
@@ -37,4 +37,10 @@ git@gitee.com:OnlyLovee/shiro_springboot_fanzy.git
         - 1:超级管理员(登录以后拥有查看 , 修改 所有用户及用户权限的权限)
         - 2:经理（登录以后只拥有查看所有用户及用户权限的权限
         - 3:用户
-    -[ ] remembeMe功能，logout功能，权限失效时间等
+    -[ ] remembeMe功能，
+    -[x] logout功能，
+    -[ ] 权限失效时间等
+    
+> 存在的问题：
+>   - 管理员修改用户的权限后，正在访问的用户可继续访问
+>   - 权限要更加细化

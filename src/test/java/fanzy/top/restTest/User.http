@@ -1,6 +1,9 @@
 # ==========已完成==========
 ###
-POST http://localhost:8080/login?username=admin&password=872359cc44c637cc73b7cd55c06d95e4
+POST http://localhost:8080/login?username=admin&password=admin
+
+###
+GET http://localhost:8080/logout
 
 ###
 POST http://localhost:8080/login?username=root&password=123

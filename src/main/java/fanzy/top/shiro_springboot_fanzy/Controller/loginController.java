@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 @RestController
 public class loginController {
@@ -69,9 +70,15 @@ public class loginController {
 		return new Result(200, "欢迎您，" + user.getUsername());
 	}
 
+	@GetMapping("/logout")
+	public Result logout(HttpSession session) {
+		session.invalidate();
+		return Result.success(null);
+	}
+
 	@GetMapping("/unauth")
 	public String unauth() {
-		return "/unauth";
+		return "redirect:/unauth";
 	}
 }
 
