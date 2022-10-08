@@ -1,13 +1,7 @@
-/**
- * @program: shiro_springboot_fanzy
- * @description:
- * @author: fanzy
- * @create: 2022-09-24 10:49
- **/
+
 package fanzy.top.shiro_springboot_fanzy.service;
 
-import fanzy.top.shiro_springboot_fanzy.dao.Impl.permissionDaoImpl;
-import fanzy.top.shiro_springboot_fanzy.dao.permissionDao;
+import fanzy.top.shiro_springboot_fanzy.dao.Impl.PermissionDaoImpl;
 import fanzy.top.shiro_springboot_fanzy.entity.Permission;
 import org.springframework.stereotype.Service;
 
@@ -15,11 +9,18 @@ import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * @program: shiro_springboot_fanzy
+ * @description:
+ * @author: fanzy
+ * @create: 2022-09-24 10:49
+ **/
 @Service
-public class permissionService {
-	private permissionDao permissionDao = new permissionDaoImpl();
+public class PermissionService {
 	@Resource
-	private userService userService;
+	private PermissionDaoImpl permissionDao;
+	@Resource
+	private UserService userService;
 
 	public List<Permission> allPermissions(String name) {
 		if (permissionDao.allPermissions(name).size() != 0) {
@@ -45,7 +46,6 @@ public class permissionService {
 		}
 		return null;
 	}
-
 
 	public Integer movePerm(String username, String permId) {
 		return permissionDao.movePerm(findPermission(username, permId));

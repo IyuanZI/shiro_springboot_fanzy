@@ -6,14 +6,15 @@
  **/
 package fanzy.top.shiro_springboot_fanzy.dao.Impl;
 
-import fanzy.top.shiro_springboot_fanzy.config.mybatis;
-import fanzy.top.shiro_springboot_fanzy.dao.permissionDao;
+import fanzy.top.shiro_springboot_fanzy.config.MybatisConfig;
+import fanzy.top.shiro_springboot_fanzy.dao.PermissionDao;
 import fanzy.top.shiro_springboot_fanzy.entity.Permission;
 import fanzy.top.shiro_springboot_fanzy.entity.User;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
-
-public class permissionDaoImpl implements permissionDao {
+@Component
+public class PermissionDaoImpl implements PermissionDao {
 	/**
 	 * 权限列表
 	 *
@@ -24,7 +25,7 @@ public class permissionDaoImpl implements permissionDao {
 	 */
 	@Override
 	public List<Permission> allPermissions(String name) {
-		return (List<Permission>) mybatis.excuteQuery(sqlSession -> {
+		return (List<Permission>) MybatisConfig.excuteQuery(sqlSession -> {
 			return sqlSession.selectList("permissionMapper.allPermissions", name);
 		});
 	}
@@ -39,7 +40,7 @@ public class permissionDaoImpl implements permissionDao {
 	 */
 	@Override
 	public Integer addPerm(Permission permission) {
-		return (Integer) mybatis.executeUpdate(sqlSession -> {
+		return (Integer) MybatisConfig.executeUpdate(sqlSession -> {
 			return sqlSession.insert("permissionMapper.addPermission", permission);
 		});
 	}
@@ -54,7 +55,7 @@ public class permissionDaoImpl implements permissionDao {
 	 */
 	@Override
 	public Integer movePerm(Permission permission) {
-		return (Integer) mybatis.executeUpdate(sqlSession -> {
+		return (Integer) MybatisConfig.executeUpdate(sqlSession -> {
 			return sqlSession.update("permissionMapper.updatePermission", permission);
 		});
 	}
@@ -69,7 +70,7 @@ public class permissionDaoImpl implements permissionDao {
 	 */
 	@Override
 	public Integer initUserPerm(User user) {
-		return (Integer) mybatis.executeUpdate(sqlSession -> {
+		return (Integer) MybatisConfig.executeUpdate(sqlSession -> {
 			return sqlSession.insert("permissionMapper.initUserPerm", user);
 		});
 	}
@@ -84,7 +85,7 @@ public class permissionDaoImpl implements permissionDao {
 	 */
 	@Override
 	public Integer initManagerPerm(User user) {
-		return (Integer) mybatis.executeUpdate(sqlSession -> {
+		return (Integer) MybatisConfig.executeUpdate(sqlSession -> {
 			return sqlSession.insert("permissionMapper.initManagerPerm", user);
 		});
 	}

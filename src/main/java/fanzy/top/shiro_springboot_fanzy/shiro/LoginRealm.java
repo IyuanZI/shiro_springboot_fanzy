@@ -1,15 +1,9 @@
-/**
- * @program: shiro_springboot_fanzy
- * @description: 自定义Realm类
- * @author: fanzy
- * @create: 2022-09-23 11:33
- **/
 package fanzy.top.shiro_springboot_fanzy.shiro;
 
 import fanzy.top.shiro_springboot_fanzy.entity.Permission;
 import fanzy.top.shiro_springboot_fanzy.entity.User;
-import fanzy.top.shiro_springboot_fanzy.service.permissionService;
-import fanzy.top.shiro_springboot_fanzy.service.userService;
+import fanzy.top.shiro_springboot_fanzy.service.PermissionService;
+import fanzy.top.shiro_springboot_fanzy.service.UserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -20,21 +14,32 @@ import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.ByteSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.annotation.Resource;
 import java.util.List;
 
+/**
+ * @program: shiro_springboot_fanzy
+ * @description: 自定义Realm类
+ * @author: fanzy
+ * @create: 2022-09-23 11:33
+ **/
 public class LoginRealm extends AuthorizingRealm {
 	private static Logger logger = LoggerFactory.getLogger(LoginRealm.class);
 
-	@Autowired
-	private permissionService permissionService;
-	@Autowired
-	private userService userService;
+	@Resource
+	private PermissionService permissionService;
+	@Resource
+	private UserService userService;
 
-	/*
+	/**
 	 * 执行授权逻辑
-	 * */
+	 *
+	 * @param principals
+	 * @return org.apache.shiro.authz.AuthorizationInfo
+	 * @author fanzy
+	 * @date 2022-10-08 8:52
+	 */
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
 		logger.info("执行授权逻辑");
@@ -47,18 +52,22 @@ public class LoginRealm extends AuthorizingRealm {
 
 		List<Permission> perms = permissionService.allPermissions(user.getUsername());
 		for (Permission perm : perms) {
-			System.out.println(perm);
+			// System.out.println(perm);
 			if (perm.getPermissionPerms() != null && perm.getPermissionOwner()) {
 				info.addStringPermission(perm.getPermissionPerms());
-				// info.addStringPermission("perms[user:deleteFile]");
 			}
 		}
 		return info;
 	}
 
-	/*
+	/**
 	 * 执行认证逻辑
-	 * */
+	 *
+	 * @param token
+	 * @return org.apache.shiro.authc.AuthenticationInfo
+	 * @author fanzy
+	 * @date 2022-10-08 8:52
+	 */
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
 		logger.info("执行认证逻辑");

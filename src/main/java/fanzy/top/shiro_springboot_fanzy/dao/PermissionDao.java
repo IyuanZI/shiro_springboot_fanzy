@@ -2,10 +2,15 @@ package fanzy.top.shiro_springboot_fanzy.dao;
 
 import fanzy.top.shiro_springboot_fanzy.entity.Permission;
 import fanzy.top.shiro_springboot_fanzy.entity.User;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-public interface permissionDao {
+/**
+ * @author Administrator
+ */
+@Component
+public interface PermissionDao {
 	/**
 	 * 查询个人权限
 	 *

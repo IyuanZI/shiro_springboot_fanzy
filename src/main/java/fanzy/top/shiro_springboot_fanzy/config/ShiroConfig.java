@@ -13,13 +13,21 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.LinkedHashMap;
 
+/**
+ * @author Administrator
+ */
 @Configuration
 public class ShiroConfig {
 	private static Logger logger = LoggerFactory.getLogger(ShiroConfig.class);
 
-	/*
+	/**
 	 * 创建ShiroFilterFactoryBean
-	 * */
+	 *
+	 * @param manager
+	 * @return org.apache.shiro.spring.web.ShiroFilterFactoryBean
+	 * @author fanzy
+	 * @date 2022-10-08 8:48
+	 */
 	@Bean
 	public ShiroFilterFactoryBean getShiroFilterFactoryBean(@Qualifier("securityManager") DefaultWebSecurityManager manager) {
 		LinkedHashMap<String, String> linkedHashMap = new LinkedHashMap<>();
@@ -27,23 +35,22 @@ public class ShiroConfig {
 		shiroFilterFactoryBean.setSecurityManager(manager);
 		shiroFilterFactoryBean.setLoginUrl("/login");
 		shiroFilterFactoryBean.setUnauthorizedUrl("/unauth");
-		/*
-		 * 内置过滤器：
-		 * 	anon:无需认证
-		 * 	authc:必须认证才可以访问
-		 * 	user:如果使用 RememberMe 的功能可以直接访问
-		 * 	perms:该资源必须得到角色权限才可以访问
-		 *  所有资源需要登录才可以访问
-		 *	同理：只要登录了，都可以访问
-		 *	linkedHashMap.put("/api/user/**","authc");
-		 * */
+		//  内置过滤器：
+		//  	anon:无需认证
+		//  	authc:必须认证才可以访问
+		//  	user:如果使用 RememberMe 的功能可以直接访问
+		//  	perms:该资源必须得到角色权限才可以访问
+		//		roles:角色
+		//   所有资源需要登录才可以访问
+		// 	同理：只要登录了，都可以访问
+
+		// 	linkedHashMap.put("/api/user/**","roles["admin,user"]");
 
 		linkedHashMap.put("/login/**", "anon");
 		linkedHashMap.put("/regist/**", "anon");
 		linkedHashMap.put("/logout/**", "anon");
 
 
-		//
 		linkedHashMap.put("/admin/addUser", "perms[admin:addUser]");
 		linkedHashMap.put("/admin/moveUser", "perms[admin:moveUser]");
 		linkedHashMap.put("/admin/modifyUser", "perms[admin:modifyUser]");
@@ -61,17 +68,21 @@ public class ShiroConfig {
 
 
 		linkedHashMap.put("/**", "authc");
-		for (String s : linkedHashMap.values()
-		) {
-			System.out.println(s);
-		}
+		// for (String s : linkedHashMap.values()
+		// ) {
+		// 	System.out.println(s);
+		// }
 		shiroFilterFactoryBean.setFilterChainDefinitionMap(linkedHashMap);
 		return shiroFilterFactoryBean;
 	}
 
-	/*
+	/**
 	 * sessionManager
-	 * */
+	 *
+	 * @return org.apache.shiro.web.session.mgt.DefaultWebSessionManager
+	 * @author fanzy
+	 * @date 2022-10-08 8:49
+	 */
 	@Bean(name = "sessionManager")
 	public DefaultWebSessionManager sessionManager() {
 		DefaultWebSessionManager defaultWebSessionManager = new DefaultWebSessionManager();
@@ -80,9 +91,14 @@ public class ShiroConfig {
 	}
 
 
-	/*
+	/**
 	 * 创建manager
-	 * */
+	 *
+	 * @param realm
+	 * @return org.apache.shiro.web.mgt.DefaultWebSecurityManager
+	 * @author fanzy
+	 * @date 2022-10-08 8:49
+	 */
 	@Bean(name = "securityManager")
 	public DefaultWebSecurityManager getDefaultWebSecurityMannager(@Qualifier("LoginRealm") LoginRealm realm) {
 		DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
@@ -91,9 +107,14 @@ public class ShiroConfig {
 		return securityManager;
 	}
 
-	/*
+	/**
 	 * 创建Realm
-	 * */
+	 *
+	 * @param matcher
+	 * @return fanzy.top.shiro_springboot_fanzy.shiro.LoginRealm
+	 * @author fanzy
+	 * @date 2022-10-08 8:49
+	 */
 	@Bean(name = "LoginRealm")
 	public LoginRealm getRealm(@Qualifier("credentialsMatcher") HashedCredentialsMatcher matcher) {
 		LoginRealm loginRealm = new LoginRealm();

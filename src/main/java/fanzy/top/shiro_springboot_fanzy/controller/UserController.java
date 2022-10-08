@@ -1,8 +1,8 @@
 
 package fanzy.top.shiro_springboot_fanzy.controller;
 
-import fanzy.top.shiro_springboot_fanzy.service.permissionService;
-import fanzy.top.shiro_springboot_fanzy.service.userService;
+import fanzy.top.shiro_springboot_fanzy.service.PermissionService;
+import fanzy.top.shiro_springboot_fanzy.service.UserService;
 import fanzy.top.shiro_springboot_fanzy.utils.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,12 +18,12 @@ import javax.annotation.Resource;
  **/
 @RequestMapping("/user")
 @RestController
-public class userController {
-	private static Logger logger = LoggerFactory.getLogger(userController.class);
+public class UserController {
+	private static Logger logger = LoggerFactory.getLogger(UserController.class);
 	@Resource
-	private permissionService permissionService;
+	private PermissionService permissionService;
 	@Resource
-	private userService userService;
+	private UserService userService;
 
 	/**
 	 * @param name
@@ -60,6 +60,5 @@ public class userController {
 		permissionService.movePerm(username, permId);
 		return new Result(permissionService.allPermissions(username), 200, "操作成功");
 	}
-
 }
 

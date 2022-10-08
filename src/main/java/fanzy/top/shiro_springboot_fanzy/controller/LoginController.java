@@ -1,14 +1,9 @@
-/**
- * @program: shiro_springboot_fanzy
- * @description:
- * @author: fanzy
- * @create: 2022-09-27 11:35
- **/
+
 package fanzy.top.shiro_springboot_fanzy.controller;
 
 import fanzy.top.shiro_springboot_fanzy.entity.User;
-import fanzy.top.shiro_springboot_fanzy.service.permissionService;
-import fanzy.top.shiro_springboot_fanzy.service.userService;
+import fanzy.top.shiro_springboot_fanzy.service.PermissionService;
+import fanzy.top.shiro_springboot_fanzy.service.UserService;
 import fanzy.top.shiro_springboot_fanzy.utils.HttpStatus;
 import fanzy.top.shiro_springboot_fanzy.utils.Result;
 import org.apache.shiro.SecurityUtils;
@@ -27,14 +22,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
-
+/**
+ * @program: shiro_springboot_fanzy
+ * @description:
+ * @author: fanzy
+ * @create: 2022-09-27 11:35
+ **/
 @RestController
-public class loginController {
-	private static Logger logger = LoggerFactory.getLogger(loginController.class);
+public class LoginController {
+	private static Logger logger = LoggerFactory.getLogger(LoginController.class);
 	@Resource
-	private userService userService;
+	private UserService userService;
 	@Resource
-	private permissionService permissionService;
+	private PermissionService permissionService;
 
 	/**
 	 * 登录

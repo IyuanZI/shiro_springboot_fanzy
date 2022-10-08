@@ -6,13 +6,14 @@
  **/
 package fanzy.top.shiro_springboot_fanzy.dao.Impl;
 
-import fanzy.top.shiro_springboot_fanzy.config.mybatis;
-import fanzy.top.shiro_springboot_fanzy.dao.userDao;
+import fanzy.top.shiro_springboot_fanzy.config.MybatisConfig;
+import fanzy.top.shiro_springboot_fanzy.dao.UserDao;
 import fanzy.top.shiro_springboot_fanzy.entity.User;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
-
-public class userDaoImpl implements userDao {
+@Component
+public class UserDaoImpl implements UserDao {
 	/**
 	 * 通过名称查找用户
 	 *
@@ -23,7 +24,7 @@ public class userDaoImpl implements userDao {
 	 */
 	@Override
 	public User queryUserByName(String name) {
-		User user = (User) mybatis.excuteQuery(sqlSession -> {
+		User user = (User) MybatisConfig.excuteQuery(sqlSession -> {
 			return sqlSession.selectOne("userMapper.queryUserByName", name);
 		});
 		if (user == null) {
@@ -42,7 +43,7 @@ public class userDaoImpl implements userDao {
 	 */
 	@Override
 	public List<User> queryAllUsers() {
-		List<User> users = (List<User>) mybatis.excuteQuery(sqlSession -> {
+		List<User> users = (List<User>) MybatisConfig.excuteQuery(sqlSession -> {
 			return sqlSession.selectList("userMapper.queryAllUser");
 		});
 		return users;
@@ -58,7 +59,7 @@ public class userDaoImpl implements userDao {
 	 */
 	@Override
 	public Integer addUser(User user) {
-		return (Integer) mybatis.executeUpdate(sqlSession -> {
+		return (Integer) MybatisConfig.executeUpdate(sqlSession -> {
 			return sqlSession.insert("userMapper.addUser", user);
 		});
 	}

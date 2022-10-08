@@ -6,21 +6,21 @@
  **/
 package fanzy.top.shiro_springboot_fanzy.service;
 
-import fanzy.top.shiro_springboot_fanzy.dao.Impl.permissionDaoImpl;
-import fanzy.top.shiro_springboot_fanzy.dao.Impl.userDaoImpl;
-import fanzy.top.shiro_springboot_fanzy.dao.permissionDao;
-import fanzy.top.shiro_springboot_fanzy.dao.userDao;
+import fanzy.top.shiro_springboot_fanzy.dao.Impl.PermissionDaoImpl;
+import fanzy.top.shiro_springboot_fanzy.dao.Impl.UserDaoImpl;
 import fanzy.top.shiro_springboot_fanzy.entity.User;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
 
 @Service
-public class userService {
-	private userDao userDao = new userDaoImpl();
-
-	private permissionDao permissionDao = new permissionDaoImpl();
+public class UserService {
+	@Resource
+	private UserDaoImpl userDao;
+	@Resource
+	private PermissionDaoImpl permissionDao;
 
 	public User queryUserByName(String name) {
 		return userDao.queryUserByName(name);
@@ -57,7 +57,6 @@ public class userService {
 				return null;
 		}
 	}
-
 
 	public List<User> queyruAllUsers() {
 		return userDao.queryAllUsers();
