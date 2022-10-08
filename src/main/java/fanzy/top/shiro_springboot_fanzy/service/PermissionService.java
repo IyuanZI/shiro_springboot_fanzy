@@ -22,6 +22,12 @@ public class PermissionService {
 	@Resource
 	private UserService userService;
 
+	/**
+	 * 查询用户所有的权限
+	 *
+	 * @param name
+	 * @return
+	 */
 	public List<Permission> allPermissions(String name) {
 		if (permissionDao.allPermissions(name).size() != 0) {
 			return permissionDao.allPermissions(name);
@@ -29,6 +35,14 @@ public class PermissionService {
 		return null;
 	}
 
+	/**
+	 * 给指定用户增加一个权限
+	 *
+	 * @param permission
+	 * @return java.lang.Integer
+	 * @author fanzy
+	 * @date 2022-10-08 11:56
+	 */
 	public Integer addPerm(Permission permission) {
 		permission.setCreateTime(userService.queryUserByName(permission.getUsername()).getCreateTime());
 		permission.setLastLoginTime(userService.queryUserByName(permission.getUsername()).getCreateTime());
@@ -36,6 +50,15 @@ public class PermissionService {
 		return permissionDao.addPerm(permission);
 	}
 
+	/**
+	 * 查询一个权限
+	 *
+	 * @param username
+	 * @param permId
+	 * @return fanzy.top.shiro_springboot_fanzy.entity.Permission
+	 * @author fanzy
+	 * @date 2022-10-08 11:56
+	 */
 	public Permission findPermission(String username, String permId) {
 		List<Permission> permissions = allPermissions(username);
 		for (Permission perms : permissions
@@ -47,6 +70,15 @@ public class PermissionService {
 		return null;
 	}
 
+	/**
+	 * 移除一个权限
+	 *
+	 * @param username
+	 * @param permId
+	 * @return java.lang.Integer
+	 * @author fanzy
+	 * @date 2022-10-08 11:57
+	 */
 	public Integer movePerm(String username, String permId) {
 		return permissionDao.movePerm(findPermission(username, permId));
 	}

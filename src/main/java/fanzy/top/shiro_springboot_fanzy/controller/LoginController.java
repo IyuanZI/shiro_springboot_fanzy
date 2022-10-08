@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+
 /**
  * @program: shiro_springboot_fanzy
  * @description:
@@ -73,7 +74,6 @@ public class LoginController {
 	 */
 	@PostMapping("/regist")
 	public Result regist(@RequestBody User user) {
-		logger.info(user.toString());
 		// 使用username作为盐值
 		Object salt = ByteSource.Util.bytes(user.getUsername());
 		String newPassword = new SimpleHash("MD5", user.getPassword(), salt, 3).toHex();
@@ -87,7 +87,7 @@ public class LoginController {
 	}
 
 	/**
-	 * 注册
+	 * 注销
 	 *
 	 * @param session
 	 * @return fanzy.top.shiro_springboot_fanzy.Utils.Result

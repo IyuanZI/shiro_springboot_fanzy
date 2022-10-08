@@ -22,10 +22,25 @@ public class UserService {
 	@Resource
 	private PermissionDaoImpl permissionDao;
 
+	/**
+	 * 通过用户名查询用户
+	 *
+	 * @param name
+	 * @return fanzy.top.shiro_springboot_fanzy.entity.User
+	 * @author fanzy
+	 * @date 2022-10-08 11:54
+	 */
+
 	public User queryUserByName(String name) {
 		return userDao.queryUserByName(name);
 	}
 
+	/**
+	 * 增加一个用户
+	 *
+	 * @param user
+	 * @return
+	 */
 	public User addUser(User user) {
 		user.setCreateTime(new Date());
 		user.setLastLoginTime(new Date());
@@ -58,6 +73,13 @@ public class UserService {
 		}
 	}
 
+	/**
+	 * 查询所有的用户
+	 *
+	 * @return java.util.List<fanzy.top.shiro_springboot_fanzy.entity.User>
+	 * @author fanzy
+	 * @date 2022-10-08 11:54
+	 */
 	public List<User> queyruAllUsers() {
 		return userDao.queryAllUsers();
 	}

@@ -8,11 +8,9 @@ package fanzy.top.shiro_springboot_fanzy.dao;
 
 
 import fanzy.top.shiro_springboot_fanzy.entity.User;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
 public interface UserDao {
 	/**
 	 * 通过名称查找用户

@@ -3,6 +3,9 @@ package fanzy.top.shiro_springboot_fanzy;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * @author Administrator
+ */
 @SpringBootApplication
 public class ShiroSpringbootFanzyApplication {
 

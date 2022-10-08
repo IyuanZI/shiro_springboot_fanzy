@@ -1,19 +1,12 @@
+package fanzy.top.shiro_springboot_fanzy.utils;
+
+import org.springframework.lang.Nullable;
 /**
  * @program: shiro_springboot_fanzy
  * @description:
  * @author: fanzy
  * @create: 2022-09-28 10:40
  **/
-package fanzy.top.shiro_springboot_fanzy.utils;
-
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
-
-
-import org.springframework.lang.Nullable;
-
 public enum HttpStatus {
 	CONTINUE(100, HttpStatus.Series.INFORMATIONAL, "Continue"),
 	SWITCHING_PROTOCOLS(101, HttpStatus.Series.INFORMATIONAL, "Switching Protocols"),

@@ -39,8 +39,12 @@ git@gitee.com:OnlyLovee/shiro_springboot_fanzy.git
         - 3:用户
     -[ ] remembeMe功能，
     -[x] logout功能，
-    -[ ] 权限失效时间等
-    
+    -[x] 权限失效时间等
+
+### 2022.10.08
+
+-[ ] 整合redis
+
 > 存在的问题：
 >   - 管理员修改用户的权限后，正在访问的用户可继续访问
 >   - 权限要更加细化
