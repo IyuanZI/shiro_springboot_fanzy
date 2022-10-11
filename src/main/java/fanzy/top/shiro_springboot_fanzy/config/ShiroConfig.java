@@ -68,10 +68,7 @@ public class ShiroConfig {
 
 
 		linkedHashMap.put("/**", "authc");
-		// for (String s : linkedHashMap.values()
-		// ) {
-		// 	System.out.println(s);
-		// }
+
 		shiroFilterFactoryBean.setFilterChainDefinitionMap(linkedHashMap);
 		return shiroFilterFactoryBean;
 	}

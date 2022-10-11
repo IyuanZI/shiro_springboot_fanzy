@@ -61,13 +61,10 @@ public class PermissionService {
 	 */
 	public Permission findPermission(String username, String permId) {
 		List<Permission> permissions = allPermissions(username);
-		for (Permission perms : permissions
-		) {
-			if (perms.getPermissionId().equals(permId)) {
-				return perms;
-			}
-		}
-		return null;
+		return permissions.stream()
+				.filter((perms) -> perms.getPermissionId().equals(permId))
+				.findAny()
+				.orElse(null);
 	}
 
 	/**
